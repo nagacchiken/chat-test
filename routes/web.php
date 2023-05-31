@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChatRoomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/chatroom', function () {
+//     // return view('chatroom');
+//     Route::get('/chatroom', [ChatRoomController::class, 'index']);
+
+// })->middleware(['auth', 'verified'])->name('chatroom');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/chatroom', [ChatRoomController::class, 'index'])->name('chatroom.index');
+    Route::get('/chatroom/{id}', [ChatRoomController::class, 'show'])->name('chatroom.show');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
