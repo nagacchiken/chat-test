@@ -7,10 +7,11 @@
         <li>{{ $chat_room_comment->user->name }} : {{ $chat_room_comment->comment }}</li>
     @endforeach
     </ul>
-    <form action="{{ route('chatroom.show',['id' => $chat_room->id]) }}" method="post">
-        <textarea name="" id="" cols="30" rows="10">
+    <form action="{{ route('chatroom.post',['id' => $chat_room->id]) }}" method="post">
+        @csrf
+        <textarea name="comment" cols="30" rows="10">
 
         </textarea>
-        <input type="button" value="投稿">
+        <input type="submit" name='submit_button' value="投稿">
     </form>
 </div>

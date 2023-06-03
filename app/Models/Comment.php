@@ -13,4 +13,11 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    protected $fillable = [
+        'chat_room_id',
+        'user_id',
+        'comment',
+        'delete_flg'
+    ];
 }

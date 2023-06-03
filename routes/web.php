@@ -32,6 +32,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/chatroom', [ChatRoomController::class, 'index'])->name('chatroom.index');
     Route::get('/chatroom/{id}', [ChatRoomController::class, 'show'])->name('chatroom.show');
+    Route::post('/chatroom/{id}', [ChatRoomController::class, 'post'])->name('chatroom.post');
 });
 
 Route::middleware('auth')->group(function () {
