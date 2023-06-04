@@ -1,5 +1,9 @@
 <h1>{{ $chat_room->name }}</h1>
-
+@if (session('flash_message'))
+<div class="flash_message">
+    {{ session('flash_message') }}
+</div>
+@endif
 <div class='comments'>
     
     <ul>
